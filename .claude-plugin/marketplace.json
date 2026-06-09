@@ -1,0 +1,24 @@
+{
+  "name": "bootique",
+  "metadata": {
+    "description": "Bootique and Bootique module Claude Code plugins"
+  },
+  "owner": {
+    "name": "Bootique"
+  },
+  "plugins": [
+    {
+      "name": "bootique",
+      "description": "Bootique — build runnable Java apps with a DI-based, modular runtime. Configure modules, write commands, and wire services.",
+      "author": { "name": "Bootique" },
+      "source": {
+        "source": "git-subdir",
+        "url": "https://github.com/bootique/bootique-ai-plugin.git",
+        "path": "plugin",
+        "ref": "main"
+      },
+      "category": "development",
+      "tags": ["java", "bootique", "di", "microservices", "cli"]
+    }
+  ]
+}

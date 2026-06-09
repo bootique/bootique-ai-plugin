@@ -1,0 +1,6 @@
+{
+  "name": "bootique",
+  "description": "Bootique — build runnable Java apps with a DI-based, modular runtime. Configure modules, write commands, wire services, and integrate Bootique modules.",
+  "version": "4.0.0",
+  "author": { "name": "Bootique" }
+}
