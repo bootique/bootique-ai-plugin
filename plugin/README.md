@@ -1,21 +1,3 @@
-<!--
-	Licensed to ObjectStyle LLC under one
-	or more contributor license agreements.  See the NOTICE file
-	distributed with this work for additional information
-	regarding copyright ownership.  The ObjectStyle LLC licenses
-	this file to you under the Apache License, Version 2.0 (the
-	"License"); you may not use this file except in compliance
-	with the License.  You may obtain a copy of the License at
-
-	  http://www.apache.org/licenses/LICENSE-2.0
-
-	Unless required by applicable law or agreed to in writing,
-	software distributed under the License is distributed on an
-	"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-	KIND, either express or implied.  See the License for the
-	specific language governing permissions and limitations
-	under the License.
--->
 # bootique — Claude Code plugin
 
 Bootique workflows for Claude Code.
@@ -44,11 +26,34 @@ The plugin is distributed from the Bootique GitHub repository:
 
 ```
 plugin/
-├── .claude-plugin/plugin.json   # manifest
-├── README.md                    # this file
-├── skills/                      # auto-triggering workflows
-└── references/                  # source-of-truth docs loaded by skills
+├── .claude-plugin/plugin.json        # manifest
+├── README.md                         # this file
+├── skills/                           # auto-triggering workflows
+│   ├── bootique-config/              # discover & edit the config surface
+│   └── bootique-run/                 # build and run a Bootique app
+└── references/                       # source-of-truth docs loaded by skills
+    ├── bootique-overview.md          # module / config / CLI fundamentals (4.0)
+    ├── runnable-jar-discovery.md     # locate the runnable jar in Maven
+    └── config-discovery.md           # extract the effective config tree
 ```
 
 Each skill is a thin trigger that loads the right reference docs and walks Claude
 through the workflow.
+
+### Skills
+
+- **bootique-config** — discover the configuration tree of a Bootique app and
+  apply changes (YAML files, environment variables, or `@BQConfig` factory
+  classes).
+- **bootique-run** — run a Bootique app: start a server, execute a single job,
+  or invoke `--help` / `--help-config` for inspection.
+
+### Conventions assumed
+
+- Build system: **Maven** (single- or multi-module).
+- Runnable jar produced by either the *"Runnable Jar with `lib` Folder"* or
+  *"Runnable Jar with Dependencies"* recipe — both expose `java -jar <path>` as
+  the entry point.
+- Bootique version: **4.x** (`BQModule.crate()` returning a `ModuleCrate`,
+  `@BQConfig` / `@BQConfigProperty` annotations). Pre-4.0 APIs are intentionally
+  out of scope.
