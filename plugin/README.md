@@ -30,11 +30,13 @@ plugin/
 ├── README.md                         # this file
 ├── skills/                           # auto-triggering workflows
 │   ├── bootique-config/              # discover & edit the config surface
-│   └── bootique-run/                 # build and run a Bootique app
+│   ├── bootique-run/                 # build and run a Bootique app
+│   └── bootique-standard-modules/    # pick the right standard module
 └── references/                       # source-of-truth docs loaded by skills
     ├── bootique-overview.md          # module / config / CLI fundamentals (4.0)
     ├── runnable-jar-discovery.md     # locate the runnable jar in Maven
-    └── config-discovery.md           # extract the effective config tree
+    ├── config-discovery.md           # extract the effective config tree
+    └── standard-modules-catalog.md   # bootique-bom module catalog (4.0-M3)
 ```
 
 Each skill is a thin trigger that loads the right reference docs and walks Claude
@@ -47,6 +49,8 @@ through the workflow.
   classes).
 - **bootique-run** — run a Bootique app: start a server, execute a single job,
   or invoke `--help` / `--help-config` for inspection.
+- **bootique-standard-modules** — discover the standard modules managed by
+  `bootique-bom` (runtime + testing) and pick the right one for a given need.
 
 ### Conventions assumed
 
